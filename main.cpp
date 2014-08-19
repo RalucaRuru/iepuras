@@ -1,10 +1,18 @@
-#include <iostream>
-#define A 5
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/socket.h>
 
-using namespace std;
-
-int main ()
+int main(int argc, char *argv[])
 {
-	cout << "n" << endl;
+	int fd;
+	fd = open("test.txt", O_RDWR);
+
+	int a = 5;
+	write(fd, &a, sizeof(a));
+
+	close(fd);
 	return 0;
 }
